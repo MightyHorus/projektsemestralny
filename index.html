@@ -1,0 +1,47 @@
+<html> 
+<head>
+<title>Karol Kołodziejczyk Index</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="container">
+	<div id="menu">
+		<div id="nav">
+			<h1>Fizyka wzorki</h1>
+			<div id="opcje" class="menu" onclick="zmianaf('kinematyka.html')">Kinematyka</div>
+			<div id="opcje" class="menu" onclick="zmianaf('moc.html')">Praca, Moc, Energia</div>
+			<div id="opcje" class="menu" onclick="zmianaf('energia.html')">Energia Elektryczna</div>
+			<div id="opcje" class="menu" onclick="zmianaf('optyka.html')">Optyka</div>
+			<div id="opcje" class="menu" onclick="zmianaf('jed.html')">Jednostki </div>
+			<div id="opcje" class="menu" onclick="zmianaf('about.html')">O projekcie</div>
+
+		</div>	
+		<br><hr>.
+	</div>
+	<div>
+	<iframe id="frame" src="about.html">
+	
+	</iframe>
+	</div>
+	<div id="menu">
+	Stworzone przez Karol Kołodziejczyk IVE
+	</div>
+</div>
+<script>
+
+function zmianaf(strona){
+document.getElementById("frame").src=strona;
+console.log("Strona zmieniona");
+}
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register("serviceWorker.js").then(function () {
+            console.log('Service worker zainstalowany!')
+        }).catch(function (err) {
+            console.log('Service worker nie zostal zainstalowany! Sprawdz blad:', err)
+        });
+    }
+
+</script>
+</body>
+</html>

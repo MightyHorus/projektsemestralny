@@ -1,0 +1,128 @@
+<head>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div>
+<h2> Praca mechaniczna </h2>
+<form>
+<table>
+<tr>
+<td >Siła [N]</td>
+<td ><input id="force" type="number"value=0 min=0 onchange="minm('force')"> </input></td>
+</tr>
+<tr>
+<td>Droga [km]</td>
+<td><input id="road" type="number" value=0 min=0 onchange="minm('road')"> </input></td>
+</tr>
+<tr>
+<td>Praca [J]</td> 
+<td><input id="work" type="number"value=0 min=0 onchange="minm('work')"> </input></td>
+</tr>
+<tr>
+<td><button value="Licz" type="button" onclick="pracaa()">Licz</button></td>
+</tr>
+</table>
+</form>
+</div>
+<script>
+
+function pracaa(){
+sila = document.getElementById("force").value;
+droga = document.getElementById("road").value;
+praca = document.getElementById("work").value;
+if(sila != 0 && droga!=0){
+	document.getElementById("work").value = sila * droga;
+	}else
+	if(sila !=0 && praca!=0){
+	document.getElementById("road").value =  (praca/sila);
+	}else{
+	document.getElementById("force").value =  (praca/droga);
+	}
+}
+
+</script>
+<div>
+<h2> Moc mechaniczna  </h2>
+<form>
+<table>
+
+
+<td>Czas [s]</td> 
+<td><input id="time" type="number"value=0 min=0 onchange="minm('time')"> </input></td>
+</tr>
+<tr>
+		<td >Praca [W]</td>
+		<td ><input id="work2" type="number"value=0 min=0 onchange="minm('work2')"> </input></td>
+</tr>
+<tr>
+<td>Moc [J]</td>
+<td><input id="power" type="number" value=0 min=0 onchange="minm('power')"> </input></td>
+</tr>
+<tr>
+<tr>
+<td><button value="Licz" type="button" onclick="mocc()">Licz</button></td>
+</tr>
+<table>
+</form>
+</div>
+<script>
+function mocc(){
+moc = document.getElementById("power").value;
+czas = document.getElementById("time").value;
+praca = document.getElementById("work2").value;
+if(praca != 0 && czas!=0){
+	document.getElementById("power").value = praca / czas;
+	}else
+	if(czas !=0 && moc!=0){
+	document.getElementById("work2").value =  czas * moc;
+	}else{
+	document.getElementById("time").value = praca/moc  ;
+	}
+}
+</script>
+<div>
+<h2> Energia kinetyczna  </h2>
+<form>
+<table>
+
+<tr>
+<td>Masa [kg]</td>
+<td><input id="mass" type="number" value=0 min=0 onchange="minm('mass')"> </input></td>
+</tr>
+<tr>
+<td>Prędkość [km/h]</td> 
+<td><input id="velocity" type="number"value=0 min=0 onchange="minm('velocity')"> </input></td>
+</tr>
+<tr>
+<td >Energia kinetyczna[J]</td>
+<td ><input id="energy" type="number"value=0 min=0 onchange="minm('energy')"> </input></td>
+</tr>
+<tr>
+<td><button value="Licz" type="button" onclick="energiaa()">Licz</button></td>
+</tr>
+
+<table>
+</form>
+</div>
+<script>
+function energiaa(){
+masa = document.getElementById("mass").value;
+predkosc = Math.pow(document.getElementById("velocity").value,2);
+energia = document.getElementById("energy").value;
+if(masa != 0 && predkosc!=0){
+	document.getElementById("energy").value = (masa * predkosc)/2;
+	}else
+	if(masa !=0 && energia!=0){
+	document.getElementById("velocity").value = Math.sqrt((energia/masa)*2) ;
+	}else{
+	document.getElementById("mass").value = (energia/predkosc)*2 ;
+	}
+}
+function minm(id){
+	if(document.getElementById(id).value<0){
+		document.getElementById(id).value=0;
+	}
+}
+</script>
+</body>

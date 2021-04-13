@@ -1,0 +1,49 @@
+<head>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<h2> Droga w ruchu jednostajnym prostoliniowym </h2>
+<form>
+<table>
+<tr>
+		<td >Prędkość[km/h]</td>
+		<td ><input id="speed" type="number"value=0 min=0 onchange="minm('speed')"> </input></td>
+</tr>
+<tr>
+<td>Czas [h]</td>
+<td><input id="time" type="number" value=0 min=0 onchange="minm('time')"> </input></td>
+</tr>
+<tr>
+<td>Droga [km]</td> 
+<td><input id="road" type="number"value=0 min=0 onchange="minm('road')"> </input></td>
+</tr>
+<tr>
+<td><button value="Licz" type="button" onclick="DrogaPJ()">Licz</button></td>
+</tr>
+<table>
+</form>
+<script>
+
+function minm(id){
+	if(document.getElementById(id).value<0){
+		document.getElementById(id).value=0;
+	}
+}
+function DrogaPJ(){
+czas = document.getElementById("time").value;
+speed = document.getElementById("speed").value;
+droga = document.getElementById("road").value;
+if(czas != 0 && speed!=0){
+	document.getElementById("road").value = czas * speed;
+	}else
+	if(czas !=0 && droga!=0){
+	document.getElementById("speed").value =  (czas / droga);
+	}else{
+	document.getElementById("time").value =  (speed/droga);
+	}
+}
+
+
+</script>
+</body>

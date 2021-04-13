@@ -1,0 +1,20 @@
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h2>Zdolność skupiająca soczewki</h2>
+<table>
+<tr>
+Ogniskowa:<input id="ogniskowa" type="number"></input>
+<td><button type="button" onclick="ogniskowa()">Licz</button></td>
+</tr>
+</table>
+Zdolność skupiająca <span id="skup">0</span> Dioptri
+<script>
+
+function  ogniskowa(){
+document.getElementById("skup").innerHTML=1/document.getElementById("ogniskowa").value;
+
+}
+</script>
+</body>

@@ -1,0 +1,92 @@
+<head>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div>
+	<h2> Prawo Oma i Moc Energetyczna </h2>
+	<form>
+	<table>
+	<tr>
+			<td >Natęzenie [A]</td>
+			<td ><input id="i" type="number"value=0 min=0 onchange="minm('i')"> </input></td>
+	</tr>
+	<tr>
+	<td>Rezystacja [R]</td>
+	<td><input id="rez" type="number" value=0 min=0 onchange="minm('rez')"> </input></td>
+	</tr>
+	<tr>
+	<td>Napiecie [V]</td> 
+	<td><input id="u" type="number"value=0 min=0 onchange="minm('u')"> </input></td>
+	</tr>
+	<tr>
+	<td> Moc: <span id="wat">0</span> watów </td>
+	</tr>
+	<tr>
+	<td><button value="Licz" type="button" onclick="ohm()">Licz</button></td>
+	</tr>
+
+	<table>
+	</form>
+<div>
+<div> 
+<h2> Rezystancja zastępcza szeregowo<h2>
+<input id="rezsz1" value="0" type="number" > </input>
+<button type="button" onclick ="resz()">Dodaj</button>
+<button type="button" onclick ="resett()">Reset</button>
+
+Rezystancja zastępcza:<span id="rezsz2">0</span> Om
+</div>
+
+<div>
+<h2> Rezystancja zastępcza równolegle<h2>
+<input id="rezsz3" value="0" type="number" > </input>
+<button type="button" onclick ="resz2()">Dodaj</button>
+<button type="button" onclick ="resettt()">Reset</button>
+
+Rezystancja zastępcza:<span id="rezsz4">0</span> Om
+</div>
+<script>
+var rezsz = 0;
+function minm(id){
+	if(document.getElementById(id).value<0){
+		document.getElementById(id).value=0;
+	}
+}
+
+
+function resett(){
+console.log(rezsz);
+rezsz=0;
+document.getElementById("rezsz2").innerHTML="0";
+}
+function resettt(){
+console.log(rezsz);
+rezsz=0;
+document.getElementById("rezsz4").innerHTML="0";
+}
+function resz(){
+	rezsz += parseInt(document.getElementById("rezsz1").value,10);
+	document.getElementById("rezsz2").innerHTML=parseInt(rezsz,10);
+}
+function resz2(){
+	rezsz += 1/parseInt(document.getElementById("rezsz3").value,10);
+	document.getElementById("rezsz4").innerHTML=(1/parseInt(rezsz,10));
+}
+function ohm(){
+napiecie = document.getElementById("u").value;
+natezenie = document.getElementById("i").value;
+rez = document.getElementById("rez").value;
+if(rez != 0 &&  natezenie!=0){
+	document.getElementById("u").value = natezenie * rez;
+	}else
+	if(napiecie !=0 && rez!=0){
+	document.getElementById("i").value =  (napiecie / rez);
+	}else{
+	document.getElementById("rez").value =  (napiecie/natezenie);
+	}
+	document.getElementById("wat").innerHTML = document.getElementById("i").value * document.getElementById("u").value;
+}
+
+</script>
+</body>

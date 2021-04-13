@@ -9,6 +9,8 @@ const cacheName = `Kalkulatorki Fizyka`;
 const filesToCache = [
     `./`,
     `index.html`
+	`pages`
+
 ];
 
 /**
